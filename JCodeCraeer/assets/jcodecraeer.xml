@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jcodecraeers pagersize="11" currentpager="0"  size="103">
+    <jcodecraeer id="1">
+        <title>java Error opening registry key 'Software\JavaSoft\Java Runtime Environment'安装jdk1.7遇到的问题</title>
+        <imageName>http://www.jcodecraeer.com/uploads/allimg/141027/2244333026-0-lp.jpg</imageName>
+        <url></url>
+        <subName></subName>
+        <subUrl>http://www.jcodecraeer.com/a/chengxusheji/java/2014/1027/1855.html</subUrl>
+        <subAction>最近开发项目要求jdk在1.7以上，我先卸载了jdk1.6，下载1.7下来安装好，配置下环境变量，可以是在输入java-version的时候发现：javaErroropeningregistrykeySoftware\JavaSoft\JavaRuntimeEnvironment但是输入javac可以看到帮助命令，在网上找了</subAction>
+        <date>java 泡在网上的日子 | 14-10-27 70阅 </date>
+    </jcodecraeer>
+    <jcodecraeer id="2">
+        <title> LinkedList用法大全</title>
+        <imageName>http://www.jcodecraeer.com</imageName>
+        <url></url>
+        <subName></subName>
+        <subUrl>http://www.jcodecraeer.com/a/chengxusheji/java/2014/1021/1818.html</subUrl>
+        <subAction>LinkedList类是双向列表,列表中的每个节点都包含了对前一个和后一个元素的引用.LinkedList的构造函数如下1.publicLinkedList():——生成空的链表2.publicLinkedList(Collectioncol):复制构造函数1、获取链表的第一个和最后一个元素importjava.u</subAction>
+        <date>LinkedList 泡在网上的日子 | 14-10-21 29阅 </date>
+    </jcodecraeer>
+    <jcodecraeer id="3">
+        <title>java里的totalMemory()、maxMemory()、freeMemory()究竟是什么</title>
+        <imageName>http://www.jcodecraeer.com</imageName>
+        <url></url>
+        <subName></subName>
+        <subUrl>http://www.jcodecraeer.com/a/chengxusheji/java/2014/0917/1687.html</subUrl>
+        <subAction>totalMemory()：返回Java虚拟机中的内存总量。maxMemory()：返回Java虚拟机试图使用的最大内存量。freeMemory()：返回Java虚拟机中的空闲内存量。这是API的解释。我写了这么一段代码publicclassRuntimeDemo{publicstaticvoidmain(Strin</subAction>
+        <date>内存 泡在网上的日子 | 14-09-17 19阅 </date>
+    </jcodecraeer>
+    <jcodecraeer id="4">
+        <title>MySql常用命令总结</title>
+        <imageName>http://www.jcodecraeer.com</imageName>
+        <url></url>
+        <subName></subName>
+        <subUrl>http://www.jcodecraeer.com/a/chengxusheji/java/2014/0916/1684.html</subUrl>
+        <subAction>MySQL常用操作基本操作，以下都是MySQL5.0下测试通过首先说明下，记住在每个命令结束时加上；（分号）1.导出整个数据库mysqldump-u用户名-p--default-character-set=latin1数据库名导出的文件名(数据库默认编码是latin1)mysqldump-uwcnc-psmgp_</subAction>
+        <date>数据库 泡在网上的日子 | 14-09-16 23阅 </date>
+    </jcodecraeer>
+    <jcodecraeer id="5">
+        <title>java filenamefilter的使用</title>
+        <imageName>http://www.jcodecraeer.com</imageName>
+        <url></url>
+        <subName></subName>
+        <subUrl>http://www.jcodecraeer.com/a/chengxusheji/java/2014/0916/1683.html</subUrl>
+        <subAction>java.io.FilenameFilter是文件名过滤器，用来过滤不符合规格的文件名，并返回合格的文件。下面是其使用方法的例子程序：使用FilenameFilter实现图片过滤，只要.gif,.jpg,.png文件。实现FilenameFilter的接口：publicclassImageFilterimplementsFilen</subAction>
+        <date>java 泡在网上的日子 | 14-09-16 10阅 </date>
+    </jcodecraeer>
+    <jcodecraeer id="6">
+        <title>Java5并发学习</title>
+        <imageName>http://www.jcodecraeer.com</imageName>
+        <url></url>
+        <subName></subName>
+        <subUrl>http://www.jcodecraeer.com/a/chengxusheji/java/2014/0903/1673.html</subUrl>
+        <subAction>在Java5之后，并发线程这块发生了根本的变化，最重要的莫过于新的启动、调度、管理线程的一大堆API了。在Java5以后，通过Executor来启动线程比用Thread的start()更好。在新特征中，可以很容易控制线程的启动、执行和关闭过程，还可以很容易使用线程池的特性</subAction>
+        <date>并发 泡在网上的日子 | 14-09-03 11阅 </date>
+    </jcodecraeer>
+    <jcodecraeer id="7">
+        <title>ExecutorService的execute和submit方法</title>
+        <imageName>http://www.jcodecraeer.com</imageName>
+        <url></url>
+        <subName></subName>
+        <subUrl>http://www.jcodecraeer.com/a/chengxusheji/java/2014/0903/1672.html</subUrl>
+        <subAction>因为之前一直是用的execute方法，最近有个情况需要用到submit方法，所以研究了下。三个区别：1、接收的参数不一样2、submit有返回值，而execute没有MethodsubmitextendsbasemethodExecutor.executebycreatingandreturningaFuturethatcanbe</subAction>
+        <date>ExecutorServ 线程池 泡在网上的日子 | 14-09-03 32阅 </date>
+    </jcodecraeer>
+    <jcodecraeer id="8">
+        <title>java笔试字符串转换：大写变小写小写变大写数字不变</title>
+        <imageName>http://www.jcodecraeer.com</imageName>
+        <url></url>
+        <subName></subName>
+        <subUrl>http://www.jcodecraeer.com/a/chengxusheji/java/2013/1012/1574.html</subUrl>
+        <subAction>字符串转换在笔试中经常遇到/****@authorzb*转换字符串，大写变小写，小写变大写，数字不变，其他变为**/publicclassTransfer{publicstaticvoidmain(String[]args){Stringstr="ABC123abcfadfjbJBHJHJDsa";StringBuffersb=newStringBu</subAction>
+        <date>java 笔试 泡在网上的日子 | 13-10-12 452阅 </date>
+    </jcodecraeer>
+    <jcodecraeer id="9">
+        <title>java多线程和android平台下的多线程</title>
+        <imageName>http://www.jcodecraeer.com</imageName>
+        <url></url>
+        <subName></subName>
+        <subUrl>http://www.jcodecraeer.com/a/chengxusheji/java/2013/0829/1525.html</subUrl>
+        <subAction>一、多线程的概念多线程即是进程的多个执行路径，但并不能理解为这几个路径是同时执行的。在单cpu下应该是根据优先级调度法则轮流给这些个线程的执行时间片。二、Java中的多线程1）、如何创建一个线程两种方式，实现Runnable接口和继承Thread类。一般建</subAction>
+        <date>java 多线程 泡在网上的日子 | 13-08-29 368阅 </date>
+    </jcodecraeer>
+    <jcodecraeer id="10">
+        <title> Java 异常处理的最佳实践Best Practices for Exception Handling</title>
+        <imageName>http://www.jcodecraeer.com/uploads/20130724/96831374680907-lp.gif</imageName>
+        <url></url>
+        <subName></subName>
+        <subUrl>http://www.jcodecraeer.com/a/chengxusheji/java/2013/0724/1485.html</subUrl>
+        <subAction>译者注：这是一篇2003年的文章，因为时间久远，可能有些观点已经过时，但里面讨论的大部分方法如今仍能适用。如若有其他好的错误处理的方法，欢迎留言。异常处理的关键就在于知道何时处理异常以及如何使用异常。这篇文章，我会提到一些最佳的异常处理方</subAction>
+        <date>异常 泡在网上的日子 | 13-07-24 247阅 </date>
+    </jcodecraeer>
+</jcodecraeers>

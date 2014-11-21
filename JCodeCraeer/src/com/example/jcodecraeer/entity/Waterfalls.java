@@ -1,4 +1,4 @@
-package com.example.jcodecraeer;
+package com.example.jcodecraeer.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;

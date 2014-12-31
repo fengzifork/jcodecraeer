@@ -1,5 +1,6 @@
 package com.example.jcodecraeer.activitys;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -9,12 +10,15 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
@@ -195,11 +199,22 @@ public class ArticleActivity extends Activity{
  			title.setText(article.getTitle());
  			summary.setText(article.getSummary());
  			
- 			for(String url :article.getAllImage()){
+ 			for(final String url :article.getAllImage()){
  				if(!url.equals("")){
  					ImageView image = new ImageView(ArticleActivity.this);
  					image.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
  					image.setAdjustViewBounds(true);
+ 					image.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View arg0) {
+							  Intent intent = new Intent("android.intent.action.VIEW"); 
+							  intent.addCategory("android.intent.category.DEFAULT"); 
+							  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
+							  Uri uri = Uri.fromFile(mImageLoader.getCache(url)); 
+							  intent.setDataAndType(uri, "image/*"); 
+							  ArticleActivity.this.startActivity(intent);
+						}
+					});
  					layout.addView(image);
  					mImageLoader.DisplayImage(url, image);
  				}

@@ -29,9 +29,9 @@ public final class R {
     public static final class drawable {
         public static final int dim_background_inverse=0x7f02001c;
         public static final int dot=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int ic_loading_rotate=0x7f020002;
-        public static final int ic_pulltorefresh_arrow=0x7f020003;
+        public static final int ic_loading_rotate=0x7f020001;
+        public static final int ic_pulltorefresh_arrow=0x7f020002;
+        public static final int jcodecraeer=0x7f020003;
         public static final int loading_01=0x7f020004;
         public static final int loading_02=0x7f020005;
         public static final int loading_03=0x7f020006;

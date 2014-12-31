@@ -11,15 +11,17 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.jcodecraeer.BaseActivity;
 import com.example.jcodecraeer.R;
-import com.example.jcodecraeer.entity.Article;
+import com.example.jcodecraeer.entity.JcodeMenu;
+import com.example.jcodecraeer.sax.MenuService;
 
 public class MainActivity extends BaseActivity implements OnItemClickListener{
 	private GridView  gridview;
-	private ArrayList<Article> menus = new ArrayList<Article>();
-	 
+	private ArrayList<JcodeMenu> menus;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,12 +32,9 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
 
 	@Override
 	public void prepareView() {
-		 //添加menu
-		Article art;
-		for(int i=0;i<10;i++){
-			art = new Article();
-			menus.add(art);
-		}
+		MenuService service = new MenuService(this);
+		menus = service.getMenus();
+		 
 		gridview = (GridView) findViewById(R.id.gridview);
 		gridview.setAdapter(new GridAdapter());
 		gridview.setOnItemClickListener(this);
@@ -63,19 +62,66 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
 		}
 
 		@Override
-		public View getView(int arg0, View arg1, ViewGroup arg2) {
-			LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-			View view = inflater.inflate(R.layout.item_grid_menu, null);
+		public View getView(int arg0, View view, ViewGroup arg2) {
+			ViewHodler hoder = null;
+			if(view==null){
+				LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+				view = inflater.inflate(R.layout.item_grid_menu, null);
+				hoder = new ViewHodler();
+				
+				hoder.name = (TextView) view.findViewById(R.id.summary);
+				hoder.title = (TextView) view.findViewById(R.id.title);
+				hoder.img = (ImageView) view.findViewById(R.id.img_bg);
+				
+				view.setTag(hoder);
+			}else{
+				hoder = (ViewHodler) view.getTag();
+			}
+			
+			hoder.name.setText(menus.get(arg0).getName());
+			hoder.title.setText(menus.get(arg0).getHref());
+			
+			switch (arg0%4) {
+			case 0:
+				hoder.img.setImageResource(R.drawable.menu1);
+				break;
+			case 1:
+				hoder.img.setImageResource(R.drawable.menu2);
+				break;
+			case 2:
+				hoder.img.setImageResource(R.drawable.menu3);
+				break;
+			case 3:
+				hoder.img.setImageResource(R.drawable.menu4);
+				break;
+			default:
+				break;
+			}
+			
 			return view;
 		}
 		
+		public class ViewHodler{
+			TextView name;
+			TextView title;
+			ImageView img;
+		}
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		Intent i = new Intent();
-		i.setClass(this, SubMainActivity.class);
-		startActivity(i);
+	public void onItemClick(AdapterView<?> arg0, View view, int arg2, long arg3) {
+		GridAdapter.ViewHodler holder = (GridAdapter.ViewHodler) view.getTag();
+		String title = holder.title.getText().toString();
+		String name = holder.name.getText().toString();
+		
+		if(title!=null && title.contains("http://www.jcodecraeer.com/plus/list.php?tid=")){
+			Intent i = new Intent();
+			i.setClass(this, SubMainActivity.class);
+			i.putExtra("title", title);
+			i.putExtra("name", name);
+			startActivity(i);
+		}
+		
 	}
 
 }

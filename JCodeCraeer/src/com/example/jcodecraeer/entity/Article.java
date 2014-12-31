@@ -1,11 +1,16 @@
 package com.example.jcodecraeer.entity;
 
+import java.util.ArrayList;
+
 public class Article {
 	private String title;
 	private String summary;
 	private String url;
 	private String imageUrl;
 	private String postTime;
+	
+	private ArrayList<String> allImage;
+	
  
 	public void setTitle(String title) {
 		this.title = title;
@@ -45,6 +50,15 @@ public class Article {
 	
 	public String getPostTime(){
 		return postTime;
+	}
+
+	public ArrayList<String> getAllImage() {
+		return allImage;
+	}
+
+	public void setAllImage(ArrayList<String> allImage) {
+		this.allImage = allImage;
 	}	
+	
 	
 }

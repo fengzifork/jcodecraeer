@@ -42,7 +42,7 @@ import android.widget.ImageView;
 public class ImageLoader {  
     private static final String TAG = "ImageLoader";
     private static final boolean DEBUG = true;
-    private int  requiredSize = 50;
+    private int  requiredSize = 100;
     private boolean isUseMediaStoreThumbnails = true;
     private boolean needCropSquareBitmap = false;
     MemoryCache memoryCache=new MemoryCache();
@@ -114,8 +114,8 @@ public class ImageLoader {
                 if (DEBUG)
                     Log.i(TAG, "change imageview LayoutParams ");
                 LayoutParams params = imageView.getLayoutParams();  
-                params.height=requiredSize;  
-                params.width =requiredSize;  
+                params.width = requiredSize;  
+                params.height =  (int) (requiredSize * 1.5);
                 imageView.setLayoutParams(params);         	
             }        	
         }

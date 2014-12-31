@@ -39,6 +39,9 @@
         <activity
             android:name="com.example.jcodecraeer.activitys.SubMainActivity"
             android:label="@string/app_name" />
+        <activity
+            android:name="com.example.jcodecraeer.activitys.ArticleActivity"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

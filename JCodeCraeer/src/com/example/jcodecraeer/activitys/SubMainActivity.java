@@ -10,6 +10,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,12 +26,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.imageloader.ImageLoader;
-import com.example.jcodecraeer.BaseActivity;
 import com.example.jcodecraeer.R;
 import com.example.jcodecraeer.entity.Article;
 import com.example.pulllistview.PullToRefreshListView;
 
-public class SubMainActivity extends BaseActivity{
+public class SubMainActivity extends Activity{
 	private static final String TAG = "MainActivity";
     private static final boolean DEBUG = true;
     
@@ -51,11 +52,10 @@ public class SubMainActivity extends BaseActivity{
 		prepareView();
 	}
 
-	@Override
 	public void prepareView() {
-		setTitle(getIntent().getStringExtra("title"));
+		setTitle(getIntent().getStringExtra("name"));
 		mArticleList = new ArrayList<Article>();
-		final String  href = "http://jcodecraeer.com/plus/list.php?tid=4";
+		final String  href = getIntent().getStringExtra("title");
 		mImageLoader = new ImageLoader(this);
 		mImageLoader.setRequiredSize(5 * (int)getResources().getDimension(R.dimen.litpic_width));
 		mAdapter = new VideoListAdapter();
@@ -63,9 +63,10 @@ public class SubMainActivity extends BaseActivity{
 		mListView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                if(position > 0 && position <= mArticleList.size()){
-//                   Intent intent  = new Intent(MainActivity.this, articleDetailActivity.class);
-//                   intent.putExtra("href", mArticleList.get(position - 1).getLink());
-//                   startActivity(intent);            	   
+                   Intent intent  = new Intent(SubMainActivity.this, ArticleActivity.class);
+                   intent.putExtra("url", mArticleList.get(position - 1).getUrl());
+                   intent.putExtra("title", mArticleList.get(position - 1).getTitle());
+                   startActivity(intent);            	   
                }
             }
         });
@@ -124,6 +125,23 @@ public class SubMainActivity extends BaseActivity{
     	}
     }	
 	
+	
+	/**
+	 * 
+	 * <div class="archive-list-item">                           
+					<div class="post-intro">
+						<h4><a href="/a/wangzhantuijian/yidonghulian/2014/1225/2216.html" rel="bookmark" title=" 苹果 iOS 和 OS X 系统质量下降危及未来增长"> 苹果 iOS 和 OS X 系统质量下降危及未来增长</a></h4>		
+						<div class="clearfix">
+							<a href='/tags.php?/苹果/' class='tag'>苹果</a> 
+							<span class="author">泡在网上的日子</span> 
+							<span class="spector">|</span>
+							<span class="date">14-12-25</span>     
+						    <span class="click">27阅</span>
+						</div>						
+						<p>《福布斯》杂志网络版周一发表分析文章称，尽管苹果硬件销售强劲，但是近来iOS 8和OS X Yosemite系统连连出现的问题为苹果敲响了警钟。软件质量的下降不仅会危及苹果未来增长，还会影响用户忠诚度。 以下是文章摘要： iPhone 6在发售首个周末销量就创下新纪 </p>
+					</div>
+				</div>
+	 * */
 	public ArrayList<Article>  parseArticleList(String href, final int page){
 		ArrayList<Article> articleList = new ArrayList<Article>();
 		try {
@@ -137,29 +155,50 @@ public class SubMainActivity extends BaseActivity{
 		    for(int i = 0; i < articleElements.size(); i++) {
 			    Article article = new Article();
 			    Element articleElement = articleElements.get(i);
-			    Element titleElement = articleElement.select("h4 a").first();
-			    Element summaryElement = articleElement.select("div.post-intro p").first();
-			    Element imgElement = null;
-			    if(articleElement.select("img").size() != 0){
-			       imgElement = articleElement.select("img").first();
-			    }
-			    Element timeElement = articleElement.select(".date").first();
-			    String url = "http://www.jcodecraeer.com" + titleElement.attr("href"); 
-			    String title = titleElement.text();
-			    String summary = summaryElement.text();
-			    if(summary.length() > 70)
-			    	summary = summary.substring(0, 70);
-			    String imgsrc = "";
-			    if(imgElement != null){
-			    	imgsrc  ="http://www.jcodecraeer.com" + imgElement.attr("src");
-			    }
-			  
-			    String postTime = timeElement.text();
-			    article.setTitle(title);
-			    article.setSummary(summary);
-			    article.setImageUrl(imgsrc);
-			    article.setPostTime(postTime);
-			    article.setUrl(url);
+			    
+			    try {
+			    	Element titleElement = articleElement.select("h4 a").first();
+			    	String url = "http://www.jcodecraeer.com" + titleElement.attr("href"); 
+				    String title = titleElement.text();
+				    article.setTitle(title);
+				    article.setUrl(url);
+				    
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			    
+			    try {
+			    	Element summaryElement = articleElement.select("div.post-intro p").first();
+			    	String summary = summaryElement.text();
+				    if(summary.length() > 2000)
+				    	summary = summary.substring(0, 2000);
+				    article.setSummary(summary);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			    
+			    try {
+			    	Element imgElement = null;
+				    if(articleElement.select("img").size() != 0){
+				       imgElement = articleElement.select("img").first();
+				    }
+				    String imgsrc = "";
+				    if(imgElement != null){
+				    	imgsrc  ="http://www.jcodecraeer.com" + imgElement.attr("src");
+				    }
+				    article.setImageUrl(imgsrc);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			    
+			    try {
+			    	 Element timeElement = articleElement.select(".date").first();
+					    String postTime = timeElement.text();
+					    article.setPostTime(postTime);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			    
 			    articleList.add(article);
 		    }
 		} catch (Exception e) {

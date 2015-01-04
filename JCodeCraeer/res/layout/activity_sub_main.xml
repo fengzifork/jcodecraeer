@@ -3,18 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-     <FrameLayout
+    <FrameLayout
         android:id="@+id/content_frame"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-        >	  
-		<com.example.pulllistview.PullToRefreshListView
-		  	android:id="@+id/listview"
-		  	android:layout_width="fill_parent"
-		  	android:layout_height="fill_parent"
-		  	android:cacheColorHint="#00000000"
-		  	android:dividerHeight="0dip"
-		  	android:divider="@null"
-		   />
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <com.fgj.pulllistview.PullToRefreshListView
+            android:id="@+id/listview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="@null"
+            android:dividerHeight="0dip" />
     </FrameLayout>
+
+    <ImageView
+        android:id="@+id/top_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/top" 
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:adjustViewBounds="true"
+        android:padding="5dp"
+        />
 </RelativeLayout>

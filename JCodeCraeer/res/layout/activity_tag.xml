@@ -1,50 +1,53 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    >
-<ImageView 
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/owner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/owner"
-        android:background="@drawable/ic_launcher"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="1dp"
-        />
-	<TextView 
+        android:background="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="10dp"
         android:text="标签"
         android:textColor="@android:color/black"
         android:textSize="20dip"
-        android:textStyle="bold" 
-        android:padding="10dp"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        />
-    <ImageView 
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/down"
-        android:src="@drawable/ic_pulltorefresh_arrow"
-        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
-        android:visibility="gone"
-        />
+        android:src="@drawable/ic_pulltorefresh_arrow"
+        android:visibility="gone" />
+
     <GridView
-        android:background="@drawable/dim_background_inverse"
-        android:layout_below="@+id/title"
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="5"
+        android:layout_below="@+id/title"
+        android:background="@drawable/dim_background_inverse"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:dividerHeight="10dp"
         android:horizontalSpacing="2dp"
-        android:verticalSpacing="2dp"
-        />
+        android:listSelector="@android:color/transparent"
+        android:numColumns="5"
+        android:verticalSpacing="2dp" />
 
 </RelativeLayout>

@@ -1,42 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/dim_background_inverse"
-    >
-	<ImageView 
-	     android:layout_width="match_parent"
-    	 android:layout_height="match_parent"
-    	 android:background="@drawable/menu1"
-    	 android:adjustViewBounds="true"
-    	 android:layout_centerInParent="true"
-    	 android:id="@+id/img_bg"
-	    />
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:textSize="25dip"
-        android:textStyle="bold" 
-        android:text="99+"
-        android:textColor="@android:color/white"
-        android:padding="10dp"
-        android:visibility="gone"
-        />
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="beforeDescendants"
+    android:paddingBottom="15.0dip"
+    android:paddingLeft="5.0dip"
+    android:paddingRight="5.0dip" >
 
-    <TextView
-        android:id="@+id/summary"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Android"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:textColor="@android:color/white"
-        android:textSize="20dip"
-        android:textStyle="bold" 
-        android:padding="10dp"
-        />
+        android:background="@drawable/selector_card_background"
+        android:descendantFocusability="afterDescendants"
+        android:paddingBottom="15.0dip"
+        android:paddingLeft="5.0dip"
+        android:paddingRight="5.0dip" >
+
+        <ImageView
+            android:id="@+id/img_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:background="@drawable/menu1" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:padding="10dp"
+            android:text="99+"
+            android:textColor="@android:color/black"
+            android:textSize="25dip"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:padding="10dp"
+            android:text="Android"
+            android:textColor="@android:color/black"
+            android:textSize="20dip"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
 </RelativeLayout>

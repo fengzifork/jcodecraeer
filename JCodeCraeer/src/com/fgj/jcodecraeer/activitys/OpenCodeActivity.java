@@ -20,6 +20,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
@@ -47,7 +49,7 @@ public class OpenCodeActivity extends Activity{
 	private ListView componentsList;
 	private ArrayList<Component> mComponentList = new ArrayList<Component>();
 	private ImageView onwer;
-	
+	private Animation slide_bottom_to_top;
 	static class ViewHolder {
 		public TextView title;
 		public TextView summary;
@@ -133,6 +135,8 @@ public class OpenCodeActivity extends Activity{
 			}
 		});
 		loadNewsList(href, 1, true);
+		
+		slide_bottom_to_top = AnimationUtils.loadAnimation(OpenCodeActivity.this, R.anim.slide_bottom_to_top);  
 	}
 	
 	class VideoListAdapter extends BaseAdapter {
@@ -172,6 +176,7 @@ public class OpenCodeActivity extends Activity{
  			}else{
  				viewHolder.image.setVisibility(View.GONE);
  			}
+ 			convertView.setAnimation(slide_bottom_to_top); 
     		return convertView;
     	}
     }	

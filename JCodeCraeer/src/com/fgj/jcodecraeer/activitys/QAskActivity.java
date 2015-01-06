@@ -19,6 +19,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -42,6 +44,8 @@ public class QAskActivity extends Activity{
 	private ImageLoader mImageLoader;
 	private ImageView topImg;
 	private ImageView onwer;
+	private Animation slide_bottom_to_top;
+	
 	static class ViewHolder {
 		public TextView title;
 		public TextView summary;
@@ -101,6 +105,7 @@ public class QAskActivity extends Activity{
 				startActivity(i);
 			}
 		});
+		slide_bottom_to_top = AnimationUtils.loadAnimation(QAskActivity.this, R.anim.push_right_in);
 		loadNewsList(href, 1, true);
 	}
 	
@@ -134,6 +139,7 @@ public class QAskActivity extends Activity{
     		Article article = mArticleList.get(position);
  			viewHolder.title.setText(article.getTitle());
  			viewHolder.summary.setText(article.getSummary());
+ 			convertView.setAnimation(slide_bottom_to_top); 
     		return convertView;
     	}
     }	

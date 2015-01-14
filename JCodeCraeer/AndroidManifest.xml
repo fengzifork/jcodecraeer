@@ -36,6 +36,7 @@
             android:label="@string/app_name" />
         <activity
             android:name="com.fgj.jcodecraeer.activitys.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:label="@string/app_name" />
         <activity
             android:name="com.fgj.jcodecraeer.activitys.SubMainActivity"
@@ -45,6 +46,7 @@
             android:label="@string/app_name" />
         <activity
             android:name="com.fgj.jcodecraeer.activitys.MainTabActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:label="@string/app_name" />
         <activity
             android:name="com.fgj.jcodecraeer.activitys.OpenCodeActivity"
@@ -54,12 +56,14 @@
             android:label="@string/app_name" />
         <activity
             android:name="com.fgj.jcodecraeer.activitys.QAskActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:label="@string/app_name" />
         <activity
             android:name="com.fgj.jcodecraeer.activitys.QuestionActivity"
             android:label="@string/app_name" />
         <activity
             android:name="com.fgj.jcodecraeer.activitys.TAGActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:label="@string/app_name" />
         <activity
             android:name="com.fgj.jcodecraeer.activitys.TAGMainActivity"

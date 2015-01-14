@@ -25,6 +25,18 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         />
+	<EditText
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:hint="搜索"
+        android:textColor="@android:color/black"
+        android:textSize="20dip"
+        android:textStyle="bold" 
+        android:layout_alignParentRight="true"
+        />
     <ImageView 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

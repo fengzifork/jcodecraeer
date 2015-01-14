@@ -1,16 +1,23 @@
 package com.fgj.jcodecraeer.activitys;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +31,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
 	private GridView  gridview;
 	private ArrayList<JcodeMenu> menus;
 	private ImageView onwer;
+	private EditText search;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,8 +58,50 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
 				startActivity(i);
 			}
 		});
+
+		search = (EditText) findViewById(R.id.search);
+		search.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				if (!search.getText().toString().equals("")) {
+					String action = search.getText().toString();
+					try {
+						Log.d("MainActivity",
+								URLEncoder.encode(action, "gb2312"));
+						Intent i = new Intent();
+						i.setClass(MainActivity.this, SubMainActivity.class);
+						i.putExtra("pagetid",
+								"http://www.jcodecraeer.com/plus/search.php?kwtype=0&q="
+										+ URLEncoder.encode(action, "gb2312"));
+						i.putExtra("name", search.getText().toString());
+						i.putExtra("h2", true);
+
+						search.setText("");
+						startActivity(i);
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		});
+		
+		
 	}
 	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		try {
+			InputMethodManager inputm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+			if(inputm!=null){
+				inputm.hideSoftInputFromInputMethod(getCurrentFocus().getWindowToken(), 0);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	private class GridAdapter extends BaseAdapter{
  
 		public GridAdapter(){
@@ -131,6 +181,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
 			i.setClass(this, SubMainActivity.class);
 			i.putExtra("pagetid", pagetid);
 			i.putExtra("name", name);
+			i.putExtra("h2", false);
 			startActivity(i);
 		}
 		

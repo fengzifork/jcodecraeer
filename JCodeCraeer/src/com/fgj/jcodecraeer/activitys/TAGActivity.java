@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
@@ -12,6 +14,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,9 +25,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,43 +38,56 @@ import com.fgj.jcodecraeer.BaseActivity;
 import com.fgj.jcodecraeer.R;
 import com.fgj.jcodecraeer.entity.Component;
 
-public class TAGActivity extends BaseActivity implements OnItemClickListener{
+public class TAGActivity extends BaseActivity implements OnItemClickListener {
 	private static final String TAG = "TAGActivity";
-	private GridView  gridview;
+	private GridView gridview;
 	private ArrayList<Component> mComponentList = new ArrayList<Component>();
 	private GridAdapter adapter;
 	private ImageView onwer;
-	private Handler handler = new Handler(){
+	private EditText search;
+	private Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
-			if(msg.what == 1000){
+			if (msg.what == 1000) {
 				adapter.notifyDataSetChanged();
 			}
 			super.handleMessage(msg);
 		}
-		
+
 	};
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tag);
-		
+
 		prepareView();
 	}
-
+	@Override
+	protected void onResume() {
+		super.onResume();
+		try {
+			InputMethodManager inputm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+			if(inputm!=null){
+				inputm.hideSoftInputFromInputMethod(getCurrentFocus().getWindowToken(), 0);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	@SuppressLint("NewApi")
 	@Override
 	public void prepareView() {
-		AsyncTask.execute(new Runnable(){
+		AsyncTask.execute(new Runnable() {
 			@Override
 			public void run() {
-//				parseTagList("http://www.jcodecraeer.com/tags.php");
+				// parseTagList("http://www.jcodecraeer.com/tags.php");
 				try {
 					InputStream in = getAssets().open("tag.htm");
 					StringBuffer sb = new StringBuffer();
 					String line = "";
-					BufferedReader bw = new BufferedReader(new InputStreamReader(in,
-							"GBK"));
+					BufferedReader bw = new BufferedReader(
+							new InputStreamReader(in, "GBK"));
 					while ((line = bw.readLine()) != null) {
 						sb.append(line);
 					}
@@ -92,14 +110,40 @@ public class TAGActivity extends BaseActivity implements OnItemClickListener{
 				startActivity(i);
 			}
 		});
+		search = (EditText) findViewById(R.id.search);
+		search.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				if (!search.getText().toString().equals("")) {
+					String action = search.getText().toString();
+					try {
+						Log.d("MainActivity",
+								URLEncoder.encode(action, "gb2312"));
+						Intent i = new Intent();
+						i.setClass(TAGActivity.this, SubMainActivity.class);
+						i.putExtra("pagetid",
+								"http://www.jcodecraeer.com/plus/search.php?kwtype=0&q="
+										+ URLEncoder.encode(action, "gb2312"));
+						i.putExtra("name", search.getText().toString());
+						i.putExtra("h2", true);
+
+						search.setText("");
+						startActivity(i);
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		});
 	}
-	
-	private class GridAdapter extends BaseAdapter{
- 
-		public GridAdapter(){
-			
+
+	private class GridAdapter extends BaseAdapter {
+
+		public GridAdapter() {
+
 		}
-		
+
 		@Override
 		public int getCount() {
 			return mComponentList.size();
@@ -118,26 +162,27 @@ public class TAGActivity extends BaseActivity implements OnItemClickListener{
 		@Override
 		public View getView(int arg0, View view, ViewGroup arg2) {
 			ViewHodler hoder = null;
-			if(view==null){
-				LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+			if (view == null) {
+				LayoutInflater inflater = LayoutInflater
+						.from(getApplicationContext());
 				view = inflater.inflate(R.layout.item_tag_menu, null);
 				hoder = new ViewHodler();
-				
+
 				hoder.name = (TextView) view.findViewById(R.id.summary);
 				hoder.title = (TextView) view.findViewById(R.id.title);
-				
+
 				view.setTag(hoder);
-			}else{
+			} else {
 				hoder = (ViewHodler) view.getTag();
 			}
-			
+
 			hoder.name.setText(mComponentList.get(arg0).getName());
 			hoder.title.setText(mComponentList.get(arg0).getHref());
-			
+
 			return view;
 		}
-		
-		public class ViewHodler{
+
+		public class ViewHodler {
 			TextView name;
 			TextView title;
 		}
@@ -148,70 +193,72 @@ public class TAGActivity extends BaseActivity implements OnItemClickListener{
 		GridAdapter.ViewHodler holder = (GridAdapter.ViewHodler) view.getTag();
 		String pagetid = holder.title.getText().toString();
 		String name = holder.name.getText().toString();
-		
-		if(pagetid!=null && pagetid.contains("http://www.jcodecraeer.com/tags.php?")){
+
+		if (pagetid != null
+				&& pagetid.contains("http://www.jcodecraeer.com/tags.php?")) {
 			Intent i = new Intent();
 			i.setClass(this, TAGMainActivity.class);
 			i.putExtra("pagetid", pagetid);
 			i.putExtra("name", name);
 			startActivity(i);
 		}
-		
+
 	}
-	
-	public void  parseTagList(String href){
+
+	public void parseTagList(String href) {
 		try {
-			Log.i("url","url = " + href);
-		    Document doc = Jsoup.connect(href).timeout(10000).get(); 
-		    Element rightmasthead = doc.select("div.tags_list").first();
-		    Elements componentElements =  rightmasthead.select("li a");	
-		    
-		    for(int i=0;i<componentElements.size();i++){
-		    	try {
-		    		Component com = new Component();
-		    		Element componentElement = componentElements.get(i);
-		    		Element component = componentElement.select("a").first();
-		    		String url = "http://www.jcodecraeer.com" + component.attr("href"); 
-				    String title = component.text();
-				    Log.d(TAG, "url="+url+";title="+title);
-				    com.setName(title);
-				    com.setHref(url);
-				    mComponentList.add(com);
+			Log.i("url", "url = " + href);
+			Document doc = Jsoup.connect(href).timeout(10000).get();
+			Element rightmasthead = doc.select("div.tags_list").first();
+			Elements componentElements = rightmasthead.select("li a");
+
+			for (int i = 0; i < componentElements.size(); i++) {
+				try {
+					Component com = new Component();
+					Element componentElement = componentElements.get(i);
+					Element component = componentElement.select("a").first();
+					String url = "http://www.jcodecraeer.com"
+							+ component.attr("href");
+					String title = component.text();
+					Log.d(TAG, "url=" + url + ";title=" + title);
+					com.setName(title);
+					com.setHref(url);
+					mComponentList.add(com);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-		    }
-		    handler.sendEmptyMessage(1000);
+			}
+			handler.sendEmptyMessage(1000);
 		} catch (Exception e) {
-			 e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
-	
-	public void  parseLocalTagList(String href){
+
+	public void parseLocalTagList(String href) {
 		try {
-		    Document doc = Jsoup.parse(href);
-		    Element rightmasthead = doc.select("div.tags_list").first();
-		    Elements componentElements =  rightmasthead.select("li a");	
-		    
-		    for(int i=0;i<componentElements.size();i++){
-		    	try {
-		    		Component com = new Component();
-		    		Element componentElement = componentElements.get(i);
-		    		Element component = componentElement.select("a").first();
-		    		String url =  component.attr("href"); 
-				    String title = component.text();
-				    Log.d(TAG, "url="+url+";title="+title);
-				    com.setName(title);
-				    com.setHref(url);
-				    mComponentList.add(com);
+			Document doc = Jsoup.parse(href);
+			Element rightmasthead = doc.select("div.tags_list").first();
+			Elements componentElements = rightmasthead.select("li a");
+
+			for (int i = 0; i < componentElements.size(); i++) {
+				try {
+					Component com = new Component();
+					Element componentElement = componentElements.get(i);
+					Element component = componentElement.select("a").first();
+					String url = component.attr("href");
+					String title = component.text();
+					Log.d(TAG, "url=" + url + ";title=" + title);
+					com.setName(title);
+					com.setHref(url);
+					mComponentList.add(com);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-		    }
-		    handler.sendEmptyMessage(1000);
+			}
+			handler.sendEmptyMessage(1000);
 		} catch (Exception e) {
-			 e.printStackTrace();
+			e.printStackTrace();
 		}
-		
+
 	}
 }

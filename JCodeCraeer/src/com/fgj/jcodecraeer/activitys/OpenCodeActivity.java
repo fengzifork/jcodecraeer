@@ -22,6 +22,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
@@ -92,6 +94,7 @@ public class OpenCodeActivity extends Activity{
 				loadNewsList(href, pageIndex, false);
 			}
 		});
+		 
 		topImg = (ImageView) findViewById(R.id.top_img);
 		topImg.setOnClickListener(new OnClickListener() {
 			@Override
@@ -138,9 +141,8 @@ public class OpenCodeActivity extends Activity{
 		
 		slide_bottom_to_top = AnimationUtils.loadAnimation(OpenCodeActivity.this, R.anim.slide_bottom_to_top);  
 	}
-	
-	class VideoListAdapter extends BaseAdapter {
-    	private int mLastAnimatedPosition;
+	private class VideoListAdapter extends BaseAdapter {
+    	private int mLastAnimatedPosition = -1;
     	public int getCount() {
     		return mArticleList.size();
     	}
@@ -176,7 +178,10 @@ public class OpenCodeActivity extends Activity{
  			}else{
  				viewHolder.image.setVisibility(View.GONE);
  			}
- 			convertView.setAnimation(slide_bottom_to_top); 
+// 			if (position > mLastAnimatedPosition) {
+// 				convertView.setAnimation(slide_bottom_to_top); 
+// 				mLastAnimatedPosition = position;
+// 			}
     		return convertView;
     	}
     }	

@@ -8,12 +8,7 @@ import com.fgj.jcodecraeer.utils.PreferenceUtils;
 
 public class BaseActivity extends Activity{
 	public PreferenceUtils prefs;
-	
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-	}
-
+	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,6 +16,11 @@ public class BaseActivity extends Activity{
 		prefs = new PreferenceUtils();
 	}
 	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		overridePendingTransition(0, android.R.anim.slide_out_right);
+	}
 	
 	public void prepareView(){
 		

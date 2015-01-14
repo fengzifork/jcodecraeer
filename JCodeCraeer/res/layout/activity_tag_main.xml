@@ -1,68 +1,73 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="UTF-8"?>
+<com.fgj.swipefinish.SildingFinishLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sildingFinishLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/title"
-        android:text="所有标签"
-        android:textColor="@android:color/black"
-        android:textSize="20dip"
-        android:textStyle="bold" 
-        android:padding="10dp"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        />
-    <ImageView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/down"
-        android:src="@drawable/ic_pulltorefresh_arrow"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        />
-    
-    
-    <FrameLayout
-        android:layout_below="@+id/title"
-        android:id="@+id/content_frame"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-        <com.fgj.pulllistview.PullToRefreshListView
-            android:id="@+id/listview"
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="所有标签"
+            android:textColor="@android:color/black"
+            android:textSize="20dip"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_pulltorefresh_arrow" />
+
+        <FrameLayout
+            android:id="@+id/content_frame"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:cacheColorHint="@android:color/transparent"
-            android:divider="@null"
-            android:dividerHeight="10dp"
-            android:listSelector="@android:color/transparent" />
-    </FrameLayout>
+            android:layout_below="@+id/title" >
 
-    <ImageView
-        android:id="@+id/top_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/top" 
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:adjustViewBounds="true"
-        android:padding="5dp"
-        />
-    <ListView 
-        android:id="@+id/components_list"
-        android:layout_width="150dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="100dp"
-        android:layout_centerVertical="true"
-        android:background="@android:color/black"
-        android:visibility="gone"
-       />
-</RelativeLayout>
+            <com.fgj.pulllistview.PullToRefreshListView
+                android:id="@+id/listview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@null"
+                android:dividerHeight="10dp"
+                android:listSelector="@android:color/transparent" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/top_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:adjustViewBounds="true"
+            android:padding="5dp"
+            android:src="@drawable/top" />
+
+        <ListView
+            android:id="@+id/components_list"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="100dp"
+            android:background="@android:color/black"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</com.fgj.swipefinish.SildingFinishLayout>

@@ -49,6 +49,7 @@
             android:divider="@null"
             android:dividerHeight="10dp"
             android:listSelector="@android:color/transparent" 
+            android:layoutAnimation="@anim/list_anim_layout"
             />
     </FrameLayout>
 

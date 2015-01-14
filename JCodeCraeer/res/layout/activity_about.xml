@@ -1,14 +1,25 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="UTF-8"?>
+<com.fgj.swipefinish.SildingFinishLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sildingFinishLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp" 
-    >
-	<TextView 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="网站内容：\n\n
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/selector_card_background"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:autoLink="web|email"
+            android:gravity="left|center_vertical"
+            android:text="网站内容：\n\n
 网站主要是关于web开发以及android开发两方面的资料，目前更侧重于android开发，并新增了开源代码下载模块，如果你对安卓开发感兴趣，可以加入我的qq群\n\n
 加入我们
 安卓开发者家园：624926379
@@ -19,12 +30,10 @@
 \n\n
 关于版权
 本站文章部分来源于互联网，但因为人力方面的原因，难以做到完美，如发现转载了你的文章而又没标明出处或者你发现这篇文章不是原创而没标明出处，可以在文章评论部分留言，我们会加上原文链接。"
-        android:textColor="@android:color/black"
-        android:textSize="18dip"
-        android:textStyle="bold" 
-        android:gravity="left|center_vertical"
-        android:layout_centerHorizontal="true"
-        android:autoLink="web|email"
-        android:textColorLink="@android:color/holo_purple"
-        />
-</RelativeLayout>
+            android:textColor="@android:color/black"
+            android:textColorLink="@android:color/holo_purple"
+            android:textSize="18dip"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</com.fgj.swipefinish.SildingFinishLayout>

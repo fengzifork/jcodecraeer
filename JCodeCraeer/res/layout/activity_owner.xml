@@ -1,79 +1,89 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="UTF-8"?>
+<com.fgj.swipefinish.SildingFinishLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sildingFinishLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
     >
-    <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/owner_layout"
-        android:orientation="horizontal"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" 
+        android:id="@+id/content"
         >
-        <ImageView 
-            android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:src="@drawable/ic_launcher"
-        	android:padding="10dp"
-            />
-        <TextView 
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:text="18101716312"
-	        android:textColor="@android:color/black"
-	        android:textSize="28dip"
-	        android:gravity="center_vertical|left"
-	        android:layout_gravity="center"
-        />
-        
-    </LinearLayout>
-    <TextView 
-        android:layout_below="@+id/owner_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/weibo_layout"
-        android:text="新浪微博"
-        android:textColor="@android:color/black"
-        android:textSize="25dip"
-        android:textStyle="bold" 
-        android:padding="10dp"
-        android:gravity="left|center_vertical"
-        android:layout_centerHorizontal="true"
-        android:background="@android:color/white"
-        android:layout_marginBottom="2dp"
-        android:layout_marginTop="2dp"
-        />
-     
-    <TextView 
-        android:layout_below="@+id/weibo_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/version"
-        android:text="检查更新V"
-        android:textColor="@android:color/black"
-        android:textSize="25dip"
-        android:textStyle="bold" 
-        android:padding="10dp"
-        android:gravity="left|center_vertical"
-        android:layout_centerHorizontal="true"
-        android:background="@android:color/white"
-        android:layout_marginBottom="2dp"
-        android:layout_marginTop="2dp"
-        />
-	<TextView 
-	    android:layout_marginTop="2dp"
-	    android:layout_marginBottom="2dp"
-	    android:layout_below="@+id/version"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/about"
-        android:text="关于"
-        android:textColor="@android:color/black"
-        android:textSize="25dip"
-        android:textStyle="bold" 
-        android:padding="10dp"
-        android:gravity="left|center_vertical"
-        android:layout_centerHorizontal="true"
-        android:background="@android:color/white"
-        />
-</RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/owner_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_card_background"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical|left"
+                android:text="18101716312"
+                android:textColor="@android:color/black"
+                android:textSize="28dip" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/weibo_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/owner_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/selector_card_background"
+            android:gravity="left|center_vertical"
+            android:padding="10dp"
+            android:text="新浪微博"
+            android:textColor="@android:color/black"
+            android:textSize="25dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weibo_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/selector_card_background"
+            android:gravity="left|center_vertical"
+            android:padding="10dp"
+            android:text="检查更新V"
+            android:textColor="@android:color/black"
+            android:textSize="25dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/about"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/version"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/selector_card_background"
+            android:gravity="left|center_vertical"
+            android:padding="10dp"
+            android:text="关于"
+            android:textColor="@android:color/black"
+            android:textSize="25dip"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</com.fgj.swipefinish.SildingFinishLayout>

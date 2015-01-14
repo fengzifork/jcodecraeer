@@ -30,6 +30,8 @@ import com.fgj.jcodecraeer.R;
 import com.fgj.jcodecraeer.entity.Article;
 import com.fgj.jcodecraeer.entity.Component;
 import com.fgj.pulllistview.PullToRefreshListView;
+import com.fgj.swipefinish.SildingFinishLayout;
+import com.fgj.swipefinish.SildingFinishLayout.OnSildingFinishListener;
 
  
 public class TAGMainActivity extends BaseActivity{
@@ -127,6 +129,15 @@ public class TAGMainActivity extends BaseActivity{
 		});
 		componentsList.setVisibility(View.GONE);
 		loadNewsList(href, 1, true);
+		SildingFinishLayout mSildingFinishLayout = (SildingFinishLayout) findViewById(R.id.sildingFinishLayout);
+		mSildingFinishLayout
+				.setOnSildingFinishListener(new OnSildingFinishListener() {
+					@Override
+					public void onSildingFinish() {
+						finish();
+					}
+				});
+		mSildingFinishLayout.setTouchView(mListView);
 	}
 	
 	class VideoListAdapter extends BaseAdapter {

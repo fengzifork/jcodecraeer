@@ -21,16 +21,20 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.fgj.imageloader.ImageLoader;
 import com.fgj.jcodecraeer.R;
 import com.fgj.jcodecraeer.entity.Article;
 import com.fgj.pulllistview.PullToRefreshListView;
+import com.fgj.swipefinish.SildingFinishLayout;
+import com.fgj.swipefinish.SildingFinishLayout.OnSildingFinishListener;
 
 
 public class QuestionActivity extends Activity{
@@ -87,7 +91,29 @@ public class QuestionActivity extends Activity{
 				topImg.setVisibility(View.VISIBLE);
 			}
 		});
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				
+				Uri uri = Uri.parse(href);
+				Intent intent = new Intent("android.intent.action.VIEW", uri);
+				intent.addCategory("android.intent.category.DEFAULT");
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				QuestionActivity.this.startActivity(intent);
+				
+			}
+		});
 		loadNewsList(href, 1, true);
+		SildingFinishLayout mSildingFinishLayout = (SildingFinishLayout) findViewById(R.id.sildingFinishLayout);
+		mSildingFinishLayout
+				.setOnSildingFinishListener(new OnSildingFinishListener() {
+					@Override
+					public void onSildingFinish() {
+						finish();
+					}
+				});
+		mSildingFinishLayout.setTouchView(mListView);
 	}
 	
  

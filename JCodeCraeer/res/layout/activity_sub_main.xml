@@ -1,33 +1,41 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="UTF-8"?>
+<com.fgj.swipefinish.SildingFinishLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sildingFinishLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    >
 
-    <FrameLayout
-        android:id="@+id/content_frame"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-        <com.fgj.pulllistview.PullToRefreshListView
-            android:id="@+id/listview"
+        <FrameLayout
+            android:id="@+id/content_frame"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:cacheColorHint="@android:color/transparent"
-            android:divider="@null"
-            android:dividerHeight="10dp"
-            android:listSelector="@android:color/transparent" />
-    </FrameLayout>
+            android:layout_height="fill_parent" >
 
-    <ImageView
-        android:id="@+id/top_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/top" 
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:adjustViewBounds="true"
-        android:padding="5dp"
-        />
-</RelativeLayout>
+            <com.fgj.pulllistview.PullToRefreshListView
+                android:id="@+id/listview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@null"
+                android:dividerHeight="10dp"
+                android:listSelector="@android:color/transparent" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/top_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:adjustViewBounds="true"
+            android:padding="5dp"
+            android:src="@drawable/top" />
+    </RelativeLayout>
+
+</com.fgj.swipefinish.SildingFinishLayout>

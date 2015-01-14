@@ -24,12 +24,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.fgj.imageloader.ImageLoader;
 import com.fgj.jcodecraeer.R;
 import com.fgj.jcodecraeer.entity.Article;
 import com.fgj.pulllistview.PullToRefreshListView;
+import com.fgj.swipefinish.SildingFinishLayout;
+import com.fgj.swipefinish.SildingFinishLayout.OnSildingFinishListener;
 
  
 public class SubMainActivity extends Activity{
@@ -41,6 +44,7 @@ public class SubMainActivity extends Activity{
 	private VideoListAdapter mAdapter;
 	private ImageLoader mImageLoader;
 	private ImageView topImg;
+	private boolean h2;
 	
 	static class ViewHolder {
 		public TextView title;
@@ -58,6 +62,7 @@ public class SubMainActivity extends Activity{
 
 	public void prepareView() {
 		setTitle(getIntent().getStringExtra("name"));
+		h2 = getIntent().getBooleanExtra("h2", false);
 		mArticleList = new ArrayList<Article>();
 		final String  href = getIntent().getStringExtra("pagetid");
 //		final String  href = "http://www.jcodecraeer.com/plus/list.php?tid=4";
@@ -94,6 +99,16 @@ public class SubMainActivity extends Activity{
 			}
 		});
 		loadNewsList(href, 1, true);
+		
+		SildingFinishLayout mSildingFinishLayout = (SildingFinishLayout) findViewById(R.id.sildingFinishLayout);
+		mSildingFinishLayout
+				.setOnSildingFinishListener(new OnSildingFinishListener() {
+					@Override
+					public void onSildingFinish() {
+						finish();
+					}
+				});
+		mSildingFinishLayout.setTouchView(mListView);
 	}
 	
 	class VideoListAdapter extends BaseAdapter {
@@ -169,7 +184,12 @@ public class SubMainActivity extends Activity{
 			    Element articleElement = articleElements.get(i);
 			    
 			    try {
-			    	Element titleElement = articleElement.select("h4 a").first();
+			    	Element titleElement;
+			    	if(h2){
+			    		titleElement = articleElement.select("h2 a").first();
+			    	}else{
+			    		titleElement = articleElement.select("h4 a").first();
+			    	}
 			    	String url = "http://www.jcodecraeer.com" + titleElement.attr("href"); 
 				    String title = titleElement.text();
 				    article.setTitle(title);

@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.ClipboardManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,16 +22,22 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.AbsListView.OnScrollListener;
+import android.widget.Toast;
 
 import com.fgj.imageloader.ImageLoader;
 import com.fgj.jcodecraeer.R;
 import com.fgj.jcodecraeer.entity.Article;
 import com.fgj.pulllistview.PullToRefreshListView;
+import com.fgj.swipefinish.SildingFinishLayout;
+import com.fgj.swipefinish.SildingFinishLayout.OnSildingFinishListener;
 
 
 public class ArticleActivity extends Activity{
@@ -87,7 +94,41 @@ public class ArticleActivity extends Activity{
 				topImg.setVisibility(View.VISIBLE);
 			}
 		});
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				
+				Uri uri = Uri.parse(href);
+				Intent intent = new Intent("android.intent.action.VIEW", uri);
+				intent.addCategory("android.intent.category.DEFAULT");
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				ArticleActivity.this.startActivity(intent);
+				
+			}
+		});
+		mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				ClipboardManager c= (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+				c.setText(mArticleList.get(0).getSummary());//设置Clipboard 的内容
+//				c.getText(smsContent.getText());提取clipboard的内容
+				Toast.makeText(ArticleActivity.this, "复制到粘贴版", Toast.LENGTH_SHORT).show();
+				return false;
+			}
+		});
 		loadNewsList(href, 1, true);
+		SildingFinishLayout mSildingFinishLayout = (SildingFinishLayout) findViewById(R.id.sildingFinishLayout);
+		mSildingFinishLayout
+				.setOnSildingFinishListener(new OnSildingFinishListener() {
+					@Override
+					public void onSildingFinish() {
+						finish();
+					}
+				});
+		mSildingFinishLayout.setTouchView(mListView);
 	}
 	
 	

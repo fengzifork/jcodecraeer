@@ -177,8 +177,8 @@ public class SubMainActivity extends Activity{
 		    }});
 			Log.i("url","url = " + href);
 		    Document doc = Jsoup.connect(href).timeout(10000).get(); 
-		    Element masthead = doc.select("div.archive-list").first();
-		    Elements articleElements =  masthead.select("div.archive-list-item");		
+		    Element masthead = doc.select("div.col-md-10").first();
+		    Elements articleElements =  masthead.select("li.archive-item");		
 		    for(int i = 0; i < articleElements.size(); i++) {
 			    Article article = new Article();
 			    Element articleElement = articleElements.get(i);
@@ -186,9 +186,9 @@ public class SubMainActivity extends Activity{
 			    try {
 			    	Element titleElement;
 			    	if(h2){
-			    		titleElement = articleElement.select("h2 a").first();
+			    		titleElement = articleElement.select("h3 a").first();
 			    	}else{
-			    		titleElement = articleElement.select("h4 a").first();
+			    		titleElement = articleElement.select("h3 a").first();
 			    	}
 			    	String url = "http://www.jcodecraeer.com" + titleElement.attr("href"); 
 				    String title = titleElement.text();
@@ -200,7 +200,7 @@ public class SubMainActivity extends Activity{
 				}
 			    
 			    try {
-			    	Element summaryElement = articleElement.select("div.post-intro p").first();
+			    	Element summaryElement = articleElement.select("div.archive-detail p").first();
 			    	String summary = summaryElement.text();
 				    if(summary.length() > 2000)
 				    	summary = summary.substring(0, 2000);

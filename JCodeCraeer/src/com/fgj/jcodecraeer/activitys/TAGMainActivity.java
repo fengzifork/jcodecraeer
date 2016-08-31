@@ -33,7 +33,20 @@ import com.fgj.pulllistview.PullToRefreshListView;
 import com.fgj.swipefinish.SildingFinishLayout;
 import com.fgj.swipefinish.SildingFinishLayout.OnSildingFinishListener;
 
- 
+ /**
+  * 
+  * 
+  *
+  *****************************************************************************************************************************************************************************
+  *  http://www.jcodecraeer.com/tags.php?/java/
+  * @author :fengguangjing
+  * @createTime:2016-10-14下午5:21:16
+  * @version:4.2.4
+  * @modifyTime:
+  * @modifyAuthor:
+  * @description:
+  *****************************************************************************************************************************************************************************
+  */
 public class TAGMainActivity extends BaseActivity{
 	private static final String TAG = "TAGMainActivity";
     private static final boolean DEBUG = true;
@@ -193,8 +206,8 @@ public class TAGMainActivity extends BaseActivity{
 			}
 			Log.i("url","url = " + href);
 		    Document doc = Jsoup.connect(href).timeout(10000).get(); 
-		    Element masthead = doc.select("div.archive-list").first();
-		    Elements articleElements =  masthead.select("div.archive-list-item");	
+		    Element masthead = doc.select("div.col-md-10").first();
+		    Elements articleElements =  masthead.select("li.archive-item");	
 		    
 		    //右侧标签
 		    Element rightmasthead = doc.select("div.tags_list").first();
@@ -222,7 +235,7 @@ public class TAGMainActivity extends BaseActivity{
 			    Element articleElement = articleElements.get(i);
 			    
 			    try {
-			    	Element titleElement = articleElement.select("h2 a").first();
+			    	Element titleElement = articleElement.select("h3 a").first();
 			    	String url = "http://www.jcodecraeer.com" + titleElement.attr("href"); 
 				    String title = titleElement.text();
 				    article.setTitle(title);
@@ -233,7 +246,7 @@ public class TAGMainActivity extends BaseActivity{
 				}
 			    
 			    try {
-			    	Element summaryElement = articleElement.select("div.post-intro p").first();
+			    	Element summaryElement = articleElement.select("div.archive-detail p").first();
 			    	String summary = summaryElement.text();
 				    if(summary.length() > 2000)
 				    	summary = summary.substring(0, 2000);

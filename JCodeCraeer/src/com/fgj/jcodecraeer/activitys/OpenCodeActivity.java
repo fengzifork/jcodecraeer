@@ -231,11 +231,11 @@ public class OpenCodeActivity extends Activity{
 		    }});
 			Log.i("url","url = " + href);
 		    Document doc = Jsoup.connect(href).timeout(10000).get(); 
-		    Element masthead = doc.select("div.real_left").first();
+		    Element masthead = doc.select("div.col-md-10").first();
 		    Elements articleElements =  masthead.select("li.codeli");	
 		    
 		    
-		    Element rightmasthead = doc.select("div.fix_right").first();
+		    Element rightmasthead = doc.select("div.col-md-2").first();
 		    Elements componentElements =  rightmasthead.select("li.slidebar-category-one");	
 		    //解析菜单
 		    /**
@@ -293,7 +293,7 @@ public class OpenCodeActivity extends Activity{
 				    }
 				    String imgsrc = "";
 				    if(imgElement != null){
-				    	imgsrc  ="http://www.jcodecraeer.com" + imgElement.attr("data-url");
+				    	imgsrc  ="http://www.jcodecraeer.com" + imgElement.attr("src");
 				    }
 				    article.setImageUrl(imgsrc);
 				} catch (Exception e) {

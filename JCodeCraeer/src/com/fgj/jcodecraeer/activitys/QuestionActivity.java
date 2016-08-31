@@ -122,7 +122,7 @@ public class QuestionActivity extends Activity{
 		try {
 			Log.i("url","url = " + href);
 		    Document doc = Jsoup.connect(href).timeout(50000).get(); 
-		    Element masthead = doc.select("div.real_left").first();
+		    Element masthead = doc.select("div.col-md-9").first();
 		    Elements articleElements =  masthead.select("div.ask_seg_content");
 		    Elements titleElements =  masthead.select("div.reply_box");
 		    

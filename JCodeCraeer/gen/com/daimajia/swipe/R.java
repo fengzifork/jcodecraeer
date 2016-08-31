@@ -14,12 +14,12 @@ public final class R {
 		public static final int verticalSwipeOffset = 0x7f010002;
 	}
 	public static final class color {
-		public static final int backgroundColor = 0x7f060000;
-		public static final int backgroundColorPress = 0x7f060001;
+		public static final int backgroundColor = 0x7f050000;
+		public static final int backgroundColorPress = 0x7f050001;
 	}
 	public static final class dimen {
-		public static final int activity_horizontal_margin = 0x7f070000;
-		public static final int activity_vertical_margin = 0x7f070001;
+		public static final int activity_horizontal_margin = 0x7f060000;
+		public static final int activity_vertical_margin = 0x7f060001;
 	}
 	public static final class drawable {
 		public static final int bird = 0x7f020000;
@@ -31,35 +31,35 @@ public final class R {
 		public static final int trash = 0x7f020035;
 	}
 	public static final class id {
-		public static final int action_gridview = 0x7f050043;
-		public static final int action_listview = 0x7f050042;
-		public static final int action_nexted = 0x7f050044;
-		public static final int action_settings = 0x7f050041;
-		public static final int archive = 0x7f050037;
-		public static final int bottom = 0x7f050003;
-		public static final int bottom_wrapper = 0x7f050036;
-		public static final int bottom_wrapper_child1 = 0x7f05003b;
-		public static final int click = 0x7f05003a;
-		public static final int delete = 0x7f050026;
-		public static final int godfather = 0x7f05002f;
-		public static final int gridview = 0x7f05000f;
-		public static final int hhhhh = 0x7f050035;
-		public static final int lay_down = 0x7f050004;
-		public static final int left = 0x7f050000;
-		public static final int listview = 0x7f050009;
-		public static final int magnifier = 0x7f050038;
-		public static final int parent_framelayout = 0x7f05003c;
-		public static final int position = 0x7f050021;
-		public static final int pull_out = 0x7f050005;
-		public static final int right = 0x7f050001;
-		public static final int sample1 = 0x7f05003e;
-		public static final int sample2 = 0x7f05003f;
-		public static final int sample3 = 0x7f050040;
-		public static final int star = 0x7f050039;
-		public static final int swipe = 0x7f05001f;
-		public static final int test_swipe_swipe = 0x7f05003d;
-		public static final int top = 0x7f050002;
-		public static final int trash = 0x7f050020;
+		public static final int action_gridview = 0x7f0a0043;
+		public static final int action_listview = 0x7f0a0042;
+		public static final int action_nexted = 0x7f0a0044;
+		public static final int action_settings = 0x7f0a0041;
+		public static final int archive = 0x7f0a0037;
+		public static final int bottom = 0x7f0a0000;
+		public static final int bottom_wrapper = 0x7f0a0036;
+		public static final int bottom_wrapper_child1 = 0x7f0a003b;
+		public static final int click = 0x7f0a003a;
+		public static final int delete = 0x7f0a0026;
+		public static final int godfather = 0x7f0a002f;
+		public static final int gridview = 0x7f0a000f;
+		public static final int hhhhh = 0x7f0a0035;
+		public static final int lay_down = 0x7f0a0004;
+		public static final int left = 0x7f0a0001;
+		public static final int listview = 0x7f0a0009;
+		public static final int magnifier = 0x7f0a0038;
+		public static final int parent_framelayout = 0x7f0a003c;
+		public static final int position = 0x7f0a0021;
+		public static final int pull_out = 0x7f0a0005;
+		public static final int right = 0x7f0a0002;
+		public static final int sample1 = 0x7f0a003e;
+		public static final int sample2 = 0x7f0a003f;
+		public static final int sample3 = 0x7f0a0040;
+		public static final int star = 0x7f0a0039;
+		public static final int swipe = 0x7f0a001f;
+		public static final int test_swipe_swipe = 0x7f0a003d;
+		public static final int top = 0x7f0a0003;
+		public static final int trash = 0x7f0a0020;
 	}
 	public static final class layout {
 		public static final int activity_main = 0x7f030002;
@@ -79,17 +79,17 @@ public final class R {
 		public static final int sample_together = 0x7f030026;
 	}
 	public static final class menu {
-		public static final int main = 0x7f0a0000;
-		public static final int my = 0x7f0a0001;
+		public static final int main = 0x7f090000;
+		public static final int my = 0x7f090001;
 	}
 	public static final class string {
-		public static final int action_settings = 0x7f080002;
-		public static final int app_name = 0x7f080000;
-		public static final int hello_world = 0x7f080001;
+		public static final int action_settings = 0x7f070002;
+		public static final int app_name = 0x7f070000;
+		public static final int hello_world = 0x7f070001;
 	}
 	public static final class style {
-		public static final int AppBaseTheme = 0x7f090001;
-		public static final int AppTheme = 0x7f090000;
+		public static final int AppBaseTheme = 0x7f080001;
+		public static final int AppTheme = 0x7f080000;
 	}
 	public static final class styleable {
 		public static final int[] SwipeLayout = { 0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003 };

@@ -15,7 +15,7 @@ import com.fgj.jcodecraeer.R;
 public class MainTabActivity extends TabActivity implements OnCheckedChangeListener{
 	TabHost mTabHost;
 	RadioGroup mRadioGroup;
-	RadioButton radio1,radio2,radio3,radio4;
+	RadioButton radio1,radio2,radio3,radio4,radio5;
 	
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
@@ -30,11 +30,15 @@ public class MainTabActivity extends TabActivity implements OnCheckedChangeListe
 		TabSpec tab_main2 = mTabHost.newTabSpec(getString(R.string.tab_main2));
 		TabSpec tab_main3 = mTabHost.newTabSpec(getString(R.string.tab_main3));
 		TabSpec tab_main4 = mTabHost.newTabSpec(getString(R.string.tab_main4));
+		TabSpec tab_main5 = mTabHost.newTabSpec(getString(R.string.tab_main5));
+
 
 		tab_main1.setContent(new Intent(this,  MainActivity.class))
 				.setIndicator(getString(R.string.tab_main1));
 		tab_main2.setContent(new Intent(this, OpenCodeActivity.class))
 				.setIndicator(getString(R.string.tab_main2));
+		tab_main5.setContent(new Intent(this, TopicActivity.class))
+		.setIndicator(getString(R.string.tab_main5));
 		tab_main3.setContent(new Intent(this, QAskActivity.class))
 				.setIndicator(getString(R.string.tab_main3));
 		tab_main4.setContent(new Intent(this, TAGActivity.class))
@@ -42,6 +46,7 @@ public class MainTabActivity extends TabActivity implements OnCheckedChangeListe
 
 		mTabHost.addTab(tab_main1);
 		mTabHost.addTab(tab_main2);
+		mTabHost.addTab(tab_main5);
 		mTabHost.addTab(tab_main3);
 		mTabHost.addTab(tab_main4);
 		
@@ -50,6 +55,7 @@ public class MainTabActivity extends TabActivity implements OnCheckedChangeListe
 		radio2 = (RadioButton) findViewById(R.id.radio2);
 		radio3 = (RadioButton) findViewById(R.id.radio3);
 		radio4 = (RadioButton) findViewById(R.id.radio4);
+		radio5 = (RadioButton) findViewById(R.id.radio5);
 		
 		mRadioGroup.setOnCheckedChangeListener(this);
 		
@@ -72,6 +78,9 @@ public class MainTabActivity extends TabActivity implements OnCheckedChangeListe
 			break;
 		case R.id.radio4:
 			mTabHost.setCurrentTabByTag(getString(R.string.tab_main4));
+			break;
+		case R.id.radio5:
+			mTabHost.setCurrentTabByTag(getString(R.string.tab_main5));
 			break;
 		default:
 			break;

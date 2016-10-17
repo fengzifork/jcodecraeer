@@ -42,7 +42,12 @@
             android:background="@drawable/selector_tab_main_bg"
             android:drawableTop="@drawable/selector_tab_main2"
             android:text="@string/tab_main2" />
-
+		<RadioButton
+            android:id="@+id/radio5"
+            style="@style/tab_child"
+            android:background="@drawable/selector_tab_main_bg"
+            android:drawableTop="@drawable/selector_tab_main5"
+            android:text="@string/tab_main5" />
         <RadioButton
             android:id="@+id/radio3"
             style="@style/tab_child"

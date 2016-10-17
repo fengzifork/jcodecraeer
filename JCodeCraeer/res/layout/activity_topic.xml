@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/owner"
+        android:background="@drawable/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="1dp"
+        />
+	<TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:text="话题"
+        android:textColor="@android:color/black"
+        android:textSize="20dip"
+        android:textStyle="bold" 
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        />
+	<EditText
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:hint="搜索"
+        android:textColor="@android:color/black"
+        android:textSize="20dip"
+        android:textStyle="bold" 
+        android:layout_alignParentRight="true"
+        />
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/down"
+        android:src="@drawable/ic_pulltorefresh_arrow"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        />
+    
+    <FrameLayout
+        android:layout_below="@+id/title"
+        android:id="@+id/content_frame"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <com.fgj.pulllistview.PullToRefreshListView
+            android:id="@+id/listview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="10dp"
+            android:listSelector="@android:color/transparent"
+            />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/top_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/top" 
+        android:layout_marginRight="20dp"
+        android:adjustViewBounds="true"
+        android:padding="5dp"
+        />
+</RelativeLayout>

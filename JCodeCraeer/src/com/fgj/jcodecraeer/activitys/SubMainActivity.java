@@ -177,8 +177,8 @@ public class SubMainActivity extends Activity{
 		    }});
 			Log.i("url","url = " + href);
 		    Document doc = Jsoup.connect(href).timeout(10000).get(); 
-		    Element masthead = doc.select("div.col-md-10").first();
-		    Elements articleElements =  masthead.select("li.archive-item");		
+//		    Element masthead = doc.select("div.col-md-10").first();
+		    Elements articleElements =  doc.select("li.archive-item");		
 		    for(int i = 0; i < articleElements.size(); i++) {
 			    Article article = new Article();
 			    Element articleElement = articleElements.get(i);

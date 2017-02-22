@@ -137,9 +137,9 @@ public class OpenSourceActivity extends Activity{
 		try {
 			Log.i("url","url = " + href);
 		    Document doc = Jsoup.connect(href).timeout(50000).get(); 
-		    Element masthead = doc.select("div.col-md-8").first();
-		    Elements titleElements =  masthead.select("div.infol");	
-		    Elements articleElements =  masthead.select("div.detail_info");
+//		    Element masthead = doc.select("div.col-md-8").first();
+		    Elements titleElements =  doc.select("div.infol");	
+		    Elements articleElements =  doc.select("div.detail_info");
 		    
 	    	for(int i = 0; i < articleElements.size(); i++) {
 			    Article article = new Article();

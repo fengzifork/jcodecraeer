@@ -231,12 +231,11 @@ public class OpenCodeActivity extends Activity{
 		    }});
 			Log.i("url","url = " + href);
 		    Document doc = Jsoup.connect(href).timeout(10000).get(); 
-		    Element masthead = doc.select("div.col-md-10").first();
-		    Elements articleElements =  masthead.select("li.codeli");	
+//		    Element masthead = doc.select("div.col-md-10").first();
+		    Elements articleElements =  doc.select("li.codeli");	
 		    
 		    
-		    Element rightmasthead = doc.select("div.col-md-2").first();
-		    Elements componentElements =  rightmasthead.select("li.slidebar-category-one");	
+		    Elements componentElements =  doc.select("li.slidebar-category-one");	
 		    //解析菜单
 		    /**
 		     * <li class="slidebar-category-one ">
